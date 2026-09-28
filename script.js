@@ -1,74 +1,352 @@
-// Ayman Salama Helbawy Portfolio - Vanilla JavaScript
+// Ayman Salama Helbawy Portfolio - Vanilla JavaScript & Multi-Language Support
 
-// Project Modal Data
-const projectData = {
-    codepilot: {
-        title: 'CodePilot',
-        subtitle: 'Multi-Tenant Project Management API',
-        status: 'Active',
-        date: 'Jun 2026 - Present',
-        github: 'https://github.com/aymansalama48/CodePilot',
-        description: 'A comprehensive project management API designed for multi-tenant environments. Built with enterprise-grade security and scalability in mind, featuring advanced authorization patterns and automated audit capabilities.',
-        features: [
-            'Designed feature modules using Vertical Slice Architecture with independent Commands, Queries, and Handlers',
-            'Enforced multi-tenant isolation, permission-based authorization, and consistent API error handling through custom pipeline behaviors',
-            'Implemented JWT authentication, OAuth integration, and a Result/Error pattern for robust API responses',
-            'Automated audit trails, soft deletes, and a 9-template transactional email system via EF Core interceptors'
-        ],
-        tech: ['ASP.NET Core', 'Clean Architecture', 'CQRS', 'MediatR', 'EF Core', 'SQL Server', 'JWT Authentication', 'RBAC']
+// Project Modal Data with Translations
+const projectDataTrans = {
+    en: {
+        skillloop: {
+            title: 'Skill-Loop',
+            subtitle: 'Peer-to-Peer Skill-Sharing Platform (Graduation Project, Team of 4)',
+            status: 'Completed',
+            date: 'Aug 2026 - Sep 2026',
+            github: 'https://github.com/aymansalama48/Skill-Loop-Backend',
+            description: 'A peer-to-peer skill-sharing platform built as a graduation project in a team of 4. Features a virtual-credit wallet with atomic deductions using optimistic concurrency, live-session booking with automated refunds, Outbox Pattern with Hangfire for reliable messaging, Redis Cache-Aside for performance, and real-time chat via SignalR.',
+            features: [
+                'Virtual-credit wallet with atomic deductions using optimistic concurrency',
+                'Live-session booking with automated refund workflows',
+                'Outbox Pattern with Hangfire for reliable background messaging',
+                'Redis Cache-Aside strategy for high-performance data access',
+                'Real-time chat powered by SignalR'
+            ],
+            tech: ['.NET 10', 'Clean Architecture', 'DDD', 'CQRS', 'MediatR', 'EF Core', 'SQL Server', 'Redis', 'Hangfire', 'SignalR']
+        },
+        clinicos: {
+            title: 'ClinicOS',
+            subtitle: 'Clinic Management & Appointment API',
+            status: 'Completed',
+            date: 'Jul 2026 - Sep 2026',
+            github: 'https://github.com/aymansalama48/ClinicOS',
+            description: 'A clinic management and appointment booking API with secure authentication, role-based access control, and robust data-integrity practices.',
+            features: [
+                'Appointment scheduling and management system',
+                'Secure authentication and role-based access control',
+                'Patient and doctor profile management',
+                'Robust data-integrity and validation practices'
+            ],
+            tech: ['ASP.NET Core', 'EF Core', 'SQL Server']
+        },
+        commerceos: {
+            title: 'CommerceOs',
+            subtitle: 'Multi-Tenant E-Commerce Platform',
+            status: 'Completed',
+            date: 'Jan 2026 - May 2026',
+            github: 'https://github.com/aymansalama48/CommerceOs',
+            description: 'A full-featured e-commerce platform built with multi-tenant architecture. Features a sophisticated order lifecycle management system and a modern React storefront with dynamic pricing capabilities.',
+            features: [
+                'Eliminated cross-tenant data leaks across 35+ tables using EF Core Global Query Filters',
+                'Engineered a 10-state order lifecycle with RBAC-gated transitions, supported by dual JWT sessions across 7 roles and silent token refresh',
+                'Delivered a React storefront with dynamic pricing, coupon logic, and real-time shipping calculation',
+                'Comprehensive logging and monitoring with Serilog for production observability'
+            ],
+            tech: ['ASP.NET Core', 'EF Core', 'SQL Server', 'ASP.NET Core Identity', 'JWT', 'React 19', 'TypeScript', 'Serilog']
+        }
     },
-    commerceos: {
-        title: 'CommerceOs',
-        subtitle: 'Multi-Tenant E-Commerce Platform',
-        status: 'Completed',
-        date: 'Jan 2026 - May 2026',
-        github: 'https://github.com/aymansalama48/CommerceOs',
-        description: 'A full-featured e-commerce platform built with multi-tenant architecture. Features a sophisticated order lifecycle management system and a modern React storefront with dynamic pricing capabilities.',
-        features: [
-            'Eliminated cross-tenant data leaks across 35+ tables using EF Core Global Query Filters',
-            'Engineered a 10-state order lifecycle with RBAC-gated transitions, supported by dual JWT sessions across 7 roles and silent token refresh',
-            'Delivered a React storefront with dynamic pricing, coupon logic, and real-time shipping calculation',
-            'Comprehensive logging and monitoring with Serilog for production observability'
-        ],
-        tech: ['ASP.NET Core', 'EF Core', 'SQL Server', 'ASP.NET Core Identity', 'JWT', 'React 19', 'TypeScript', 'Serilog']
+    ar: {
+        skillloop: {
+            title: 'Skill-Loop',
+            subtitle: 'منصة تبادل المهارات من نظير إلى نظير (مشروع تخرج، فريق من 4)',
+            status: 'مكتمل',
+            date: 'أغسطس 2026 - سبتمبر 2026',
+            github: 'https://github.com/aymansalama48/Skill-Loop-Backend',
+            description: 'منصة تبادل مهارات من نظير إلى نظير تم بناؤها كمشروع تخرج ضمن فريق من 4 أفراد. تتضمن محفظة رصيد افتراضية مع خصم ذري باستخدام التزامن التفاؤلي، وحجز جلسات مباشرة مع استرداد تلقائي، ونمط Outbox مع Hangfire، وRedis Cache-Aside، ومحادثة فورية عبر SignalR.',
+            features: [
+                'محفظة رصيد افتراضية مع خصم ذري باستخدام التزامن التفاؤلي (Optimistic Concurrency)',
+                'حجز جلسات مباشرة مع سير عمل استرداد تلقائي',
+                'نمط Outbox مع Hangfire لإرسال رسائل خلفية موثوقة',
+                'استراتيجية Redis Cache-Aside للوصول السريع للبيانات',
+                'محادثة فورية مدعومة بـ SignalR'
+            ],
+            tech: ['.NET 10', 'Clean Architecture', 'DDD', 'CQRS', 'MediatR', 'EF Core', 'SQL Server', 'Redis', 'Hangfire', 'SignalR']
+        },
+        clinicos: {
+            title: 'ClinicOS',
+            subtitle: 'واجهة برمجة تطبيقات إدارة العيادات والمواعيد',
+            status: 'مكتمل',
+            date: 'يوليو 2026 - سبتمبر 2026',
+            github: 'https://github.com/aymansalama48/ClinicOS',
+            description: 'واجهة برمجة تطبيقات لإدارة العيادات وحجز المواعيد مع توثيق آمن وتحكم بالوصول المبني على الأدوار وممارسات قوية لسلامة البيانات.',
+            features: [
+                'نظام جدولة وإدارة المواعيد',
+                'توثيق آمن وتحكم بالوصول المبني على الأدوار',
+                'إدارة ملفات المرضى والأطباء',
+                'ممارسات قوية لسلامة البيانات والتحقق'
+            ],
+            tech: ['ASP.NET Core', 'EF Core', 'SQL Server']
+        },
+        commerceos: {
+            title: 'CommerceOs',
+            subtitle: 'منصة التجارة الإلكترونية متعددة المستأجرين',
+            status: 'مكتمل',
+            date: 'يناير 2026 - مايو 2026',
+            github: 'https://github.com/aymansalama48/CommerceOs',
+            description: 'منصة تجارة إلكترونية متكاملة مبنية بهندسة معمارية متعددة المستأجرين. وتتميز بنظام إدارة دورة حياة الطلبات بدقة ومتجر تفاعلي React يدعم التسعير الديناميكي.',
+            features: [
+                'عزل كامل لبيانات المستأجرين ومنع التسريب في أكثر من 35 جدولاً باستخدام فلاتر الاستعلام العالمية (Global Query Filters) في EF Core',
+                'تصميم دورة حياة للطلبات مكونة من 10 حالات مع انتقال محمي بالصلاحيات وجلسات توثيق JWT ثنائية عبر 7 أدوار وتحديث تلقائي للتوثيق',
+                'إنشاء متجر واجهة مستخدم React مع تسعير ديناميكي، ومنطق كوبونات الخصم، وحساب تكاليف الشحن الفوري',
+                'تسجيل ومراقبة كاملة للأخطاء والأداء باستخدام أداة Serilog للمتابعة المباشرة في خوادم الإنتاج'
+            ],
+            tech: ['ASP.NET Core', 'EF Core', 'SQL Server', 'ASP.NET Core Identity', 'JWT', 'React 19', 'TypeScript', 'Serilog']
+        }
     }
 };
+
+// Site Content Translations
+const translations = {
+    en: {
+        nav_home: "Home",
+        nav_about: "About",
+        nav_projects: "Projects",
+        nav_experience: "Experience",
+        nav_skills: "Skills",
+        nav_education: "Education",
+        nav_contact: "Contact",
+        badge_available: "Available for opportunities",
+        hero_greeting: "Hi, I'm",
+        hero_name: "Ayman Salama Helbawy",
+        hero_subtitle: "Junior .NET Backend Developer | ASP.NET Core | Web APIs | EF Core | SQL Server",
+        hero_description: "Building robust, scalable backend systems with clean architecture and modern design patterns. Passionate about secure API development and multi-tenant solutions.",
+        btn_download_cv: "Download CV",
+        btn_contact_me: "Contact Me",
+        scroll_down: "Scroll Down",
+        about_tag: "About Me",
+        about_title: "Professional Summary",
+        about_heading: "Junior .NET Backend Developer with a passion for clean, scalable architecture.",
+        about_text: "Junior .NET Backend Developer proficient in ASP.NET Core, Clean Architecture, CQRS, EF Core, and SQL Server. Built three backend systems (multi-tenant e-commerce, clinic booking, peer-to-peer credit platform) with secure authentication, RBAC, and data-integrity practices, including a team project delivered in a team of 4.",
+        stats_projects: "Backend Projects",
+        stats_team: "Team of 4 Graduation Project",
+        stats_tables: "Tables Designed",
+        info_name: "<strong>Name:</strong> Ayman Salama Helbawy",
+        info_role: "<strong>Role:</strong> Junior .NET Backend Developer",
+        info_location: "<strong>Location:</strong> Cairo, Egypt",
+        info_email: "<strong>Email:</strong> Ayman.Backend@Gmail.com",
+        info_phone: "<strong>Phone:</strong> +20 150 143 5003",
+        projects_tag: "Portfolio",
+        projects_title: "Featured Projects",
+        project_skillloop_title: "Skill-Loop",
+        project_skillloop_subtitle: "Peer-to-Peer Skill-Sharing Platform (Graduation Project, Team of 4)",
+        project_skillloop_desc: "Virtual-credit wallet with atomic deductions, live-session booking with automated refunds, Outbox Pattern with Hangfire, Redis Cache-Aside, and real-time chat.",
+        project_skillloop_date: "Aug 2026 - Sep 2026",
+        project_clinicos_title: "ClinicOS",
+        project_clinicos_subtitle: "Clinic Management & Appointment API",
+        project_clinicos_desc: "A clinic management and appointment booking API with secure authentication, role-based access control, and robust data-integrity practices.",
+        project_clinicos_date: "Jul 2026 - Sep 2026",
+        project_commerceos_title: "CommerceOs",
+        project_commerceos_subtitle: "Multi-Tenant E-Commerce Platform",
+        project_commerceos_desc: "Full-featured e-commerce platform with multi-tenant data isolation, 10-state order lifecycle, and a React storefront with dynamic pricing.",
+        project_commerceos_date: "Jan 2026 - May 2026",
+        btn_github: "View on GitHub",
+        btn_details: "Details",
+        exp_tag: "Career",
+        exp_title: "Work Experience",
+        exp_role_1: "Backend Development Intern",
+        exp_company_1: "CodePlus",
+        exp_date_1: "Aug 2026 - Sep 2026 | Cairo, Egypt",
+        exp_desc_1_li1: "Completed an 8-session Advanced .NET Backend program (CQRS/MediatR, caching, Hangfire, Docker, CI/CD) and delivered Skill-Loop as its graduation project.",
+        skills_tag: "Expertise",
+        skills_title: "Technical Skills",
+        skill_title_backend: "Backend",
+        skill_title_architecture: "Architecture & Patterns",
+        skill_title_database: "Database",
+        skill_title_testing: "Testing & Quality",
+        skill_title_devops: "DevOps & Tools",
+        skill_title_frontend: "Frontend",
+        edu_tag: "Academic",
+        edu_title: "Education",
+        edu_degree_1: ".NET Web Development Diploma",
+        edu_school_1: "IT Legend",
+        edu_date_1: "Aug 2024 - Dec 2025 | Cairo, Egypt",
+        edu_coursework_1: "<strong>Coursework:</strong> OOP, Advanced C#, Data Structures & Algorithms, SQL Server, ASP.NET Core",
+        edu_degree_2: "Bachelor's Degree in Management Sciences",
+        edu_school_2: "Higher Institute for Computer and Administrative Information Systems",
+        edu_date_2: "Oct 2020 - May 2024 | Cairo, Egypt",
+        edu_grade_2: "<strong>Grade:</strong> Very Good",
+        languages_tag: "Communication",
+        languages_title: "Languages",
+        lang_ar: "Arabic",
+        lang_ar_level: "Native",
+        lang_en: "English",
+        lang_en_level: "Working Proficiency",
+        contact_tag: "Get in Touch",
+        contact_title: "Contact Me",
+        contact_heading: "Let's work together",
+        contact_text: "I'm open to new opportunities, collaborations, and interesting projects. Feel free to reach out through any of the channels below.",
+        contact_label_email: "Email",
+        contact_label_phone: "Phone / WhatsApp / Telegram",
+        contact_label_location: "Location",
+        contact_value_location: "Cairo, Egypt",
+        footer_tagline: "Building robust backend systems with clean architecture.",
+        footer_rights: "Ayman Salama Helbawy. All rights reserved.",
+        btn_close: "Close"
+    },
+    ar: {
+        nav_home: "الرئيسية",
+        nav_about: "من أنا",
+        nav_projects: "المشاريع",
+        nav_experience: "الخبرات",
+        nav_skills: "المهارات",
+        nav_education: "التعليم",
+        nav_contact: "اتصل بي",
+        badge_available: "متاح لفرص العمل الجديدة",
+        hero_greeting: "مرحباً، أنا",
+        hero_name: "أيمن سلامة الهلباوي",
+        hero_subtitle: "مطوّر دوت نت خلفي مبتدئ | ASP.NET Core | Web APIs | EF Core | SQL Server",
+        hero_description: "بناء أنظمة خلفية قوية وقابلة للتوسع باستخدام بنية برمجية نظيفة (Clean Architecture) وأنماط تصميم حديثة. شغوف بتطوير واجهات برمجة تطبيقات آمنة وحلول متعددة المستأجرين (Multi-tenant).",
+        btn_download_cv: "تحميل السيرة الذاتية",
+        btn_contact_me: "تواصل معي",
+        scroll_down: "انزل لأسفل",
+        about_tag: "من أنا",
+        about_title: "الملخص المهني",
+        about_heading: "مطور دوت نت خلفي مبتدئ مع شغف بالهندسة النظيفة والقابلة للتوسع.",
+        about_text: "مطور دوت نت خلفي مبتدئ متمكن من ASP.NET Core و Clean Architecture و CQRS و EF Core و SQL Server. قام ببناء ثلاثة أنظمة خلفية (تجارة إلكترونية متعددة المستأجرين، حجز عيادات، منصة ائتمان من نظير إلى نظير) مع توثيق آمن وتحكم بالوصول وممارسات سلامة البيانات، بما في ذلك مشروع فريق تم تسليمه ضمن فريق من 4 أفراد.",
+        stats_projects: "مشاريع خلفية",
+        stats_team: "مشروع تخرج فريق من 4",
+        stats_tables: "جداول مصممة",
+        info_name: "<strong>الاسم:</strong> أيمن سلامة الهلباوي",
+        info_role: "<strong>الوظيفة:</strong> مطور دوت نت خلفي مبتدئ",
+        info_location: "<strong>الموقع:</strong> القاهرة، مصر",
+        info_email: "<strong>البريد الإلكتروني:</strong> Ayman.Backend@Gmail.com",
+        info_phone: "<strong>الهاتف:</strong> +20 150 143 5003",
+        projects_tag: "معرض الأعمال",
+        projects_title: "المشاريع المميزة",
+        status_completed: "مكتمل",
+        project_skillloop_title: "Skill-Loop",
+        project_skillloop_subtitle: "منصة تبادل المهارات من نظير إلى نظير (مشروع تخرج، فريق من 4)",
+        project_skillloop_desc: "محفظة رصيد افتراضية مع خصم ذري، حجز جلسات مباشرة مع استرداد تلقائي، نمط Outbox مع Hangfire، Redis Cache-Aside، ومحادثة فورية.",
+        project_skillloop_date: "أغسطس 2026 - سبتمبر 2026",
+        project_clinicos_title: "ClinicOS",
+        project_clinicos_subtitle: "واجهة برمجة تطبيقات إدارة العيادات والمواعيد",
+        project_clinicos_desc: "واجهة برمجة تطبيقات لإدارة العيادات وحجز المواعيد مع توثيق آمن وتحكم بالوصول المبني على الأدوار وممارسات قوية لسلامة البيانات.",
+        project_clinicos_date: "يوليو 2026 - سبتمبر 2026",
+        project_commerceos_title: "CommerceOs",
+        project_commerceos_subtitle: "منصة التجارة الإلكترونية متعددة المستأجرين",
+        project_commerceos_desc: "منصة تجارة إلكترونية متكاملة مبنية بهندسة معمارية متعددة المستأجرين. وتتميز بنظام إدارة دورة حياة الطلبات بدقة ومتجر تفاعلي React يدعم التسعير الديناميكي.",
+        project_commerceos_date: "يناير 2026 - مايو 2026",
+        btn_github: "عرض على GitHub",
+        btn_details: "التفاصيل",
+        exp_tag: "المسار المهني",
+        exp_title: "الخبرة المهنية",
+        exp_role_1: "متدرب تطوير خلفي (Backend Development Intern)",
+        exp_company_1: "CodePlus",
+        exp_date_1: "أغسطس 2026 - سبتمبر 2026 | القاهرة، مصر",
+        exp_desc_1_li1: "أكملت برنامج .NET Backend المتقدم المكوّن من 8 جلسات (CQRS/MediatR، التخزين المؤقت، Hangfire، Docker، CI/CD) وسلّمت مشروع Skill-Loop كمشروع تخرج.",
+        skills_tag: "الخبرات والمهارات",
+        skills_title: "المهارات التقنية",
+        skill_title_backend: "تطوير الواجهات الخلفية (Backend)",
+        skill_title_architecture: "الهندسة المعمارية والأنماط",
+        skill_title_database: "قواعد البيانات (Database)",
+        skill_title_testing: "الاختبار والجودة",
+        skill_title_devops: "الـ DevOps والأدوات",
+        skill_title_frontend: "الواجهات الأمامية (Frontend)",
+        edu_tag: "التعليم",
+        edu_title: "المؤهلات الدراسية",
+        edu_degree_1: "دبلومة تطوير الويب باستخدام تقنيات .NET",
+        edu_school_1: "IT Legend",
+        edu_date_1: "أغسطس 2024 - ديسمبر 2025 | القاهرة، مصر",
+        edu_coursework_1: "<strong>المقررات الدراسية:</strong> OOP، السي شارب المتقدم، هياكل البيانات والخوارزميات، SQL Server، و ASP.NET Core",
+        edu_degree_2: "درجة البكالوريوس في العلوم الإدارية",
+        edu_school_2: "المعهد العالي لعلوم الحاسب ونظم المعلومات الإدارية",
+        edu_date_2: "أكتوبر 2020 - مايو 2024 | القاهرة، مصر",
+        edu_grade_2: "<strong>التقدير:</strong> جيد جداً",
+        languages_tag: "التواصل",
+        languages_title: "اللغات",
+        lang_ar: "العربية",
+        lang_ar_level: "اللغة الأم",
+        lang_en: "الإنجليزية",
+        lang_en_level: "مستوى عملي ممتاز",
+        contact_tag: "تواصل معي",
+        contact_title: "اتصل بي",
+        contact_heading: "لنعمل معاً",
+        contact_text: "أنا منفتح على الفرص الجديدة، التعاون، والمشاريع البرمجية المميزة. لا تتردد في التواصل معي عبر أي من القنوات المتاحة أدناه.",
+        contact_label_email: "البريد الإلكتروني",
+        contact_label_phone: "الهاتف / واتساب / تليجرام",
+        contact_label_location: "الموقع",
+        contact_value_location: "القاهرة، مصر",
+        footer_tagline: "بناء أنظمة خلفية قوية وتطبيقات قابلة للتوسع باستخدام بنية نظيفة.",
+        footer_rights: "أيمن سلامة الهلباوي. جميع الحقوق محفوظة.",
+        btn_close: "إغلاق"
+    }
+};
+
+// Global Current Language
+let currentLang = localStorage.getItem('lang') || 'en';
+
+// Set language function
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    
+    // Set document attributes for layout direction
+    document.documentElement.setAttribute('lang', lang);
+    document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+    
+    // Update language toggle button text
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+        langToggle.textContent = lang === 'en' ? 'AR' : 'EN';
+        langToggle.setAttribute('aria-label', lang === 'en' ? 'Switch to Arabic' : 'Switch to English');
+    }
+    
+    // Translate elements with [data-i18n]
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+            // Check if translation has HTML content (like strong tags)
+            if (translations[lang][key].includes('<strong') || translations[lang][key].includes('<li')) {
+                element.innerHTML = translations[lang][key];
+            } else {
+                element.textContent = translations[lang][key];
+            }
+        }
+    });
+}
 
 // Modal functions in global scope for inline onclick handlers
 function openModal(projectId) {
     const modal = document.getElementById('projectModal');
     const modalBody = document.getElementById('modalBody');
-    const data = projectData[projectId];
+    const data = projectDataTrans[currentLang][projectId];
     
     if (!data) return;
     
-    const statusClass = data.status === 'Active' ? 'active' : 'completed';
+    // Status color mapping helper
+    const statusClass = 'completed';
+    const statusText = currentLang === 'ar' ? 'مكتمل' : 'Completed';
     
     modalBody.innerHTML = `
         <h2 class="modal-title" id="modalTitle">${data.title}</h2>
         <p class="modal-subtitle">${data.subtitle}</p>
         <div class="modal-meta">
-            <span class="project-status ${statusClass}">${data.status}</span>
+            <span class="project-status ${statusClass}">${statusText}</span>
             <span class="project-date">${data.date}</span>
         </div>
         <p class="modal-description">${data.description}</p>
         <div class="modal-features">
-            <h4>Key Features</h4>
+            <h4>${currentLang === 'ar' ? 'الميزات الرئيسية' : 'Key Features'}</h4>
             <ul>
                 ${data.features.map(f => `<li>${f}</li>`).join('')}
             </ul>
         </div>
         <div class="modal-tech">
-            <h4>Tech Stack</h4>
+            <h4>${currentLang === 'ar' ? 'بيئة العمل' : 'Tech Stack'}</h4>
             <div class="project-tech">
                 ${data.tech.map(t => `<span class="tech-badge">${t}</span>`).join('')}
             </div>
         </div>
         <div class="modal-actions">
             <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                <i class="fab fa-github"></i> View on GitHub
+                <i class="fab fa-github"></i> ${currentLang === 'ar' ? 'عرض على GitHub' : 'View on GitHub'}
             </a>
-            <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+            <button class="btn btn-secondary" onclick="closeModal()">${currentLang === 'ar' ? 'إغلاق' : 'Close'}</button>
         </div>
     `;
     
@@ -89,6 +367,18 @@ window.openModal = openModal;
 window.closeModal = closeModal;
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Apply saved language on load
+    setLanguage(currentLang);
+
+    // Bind language toggle action
+    const langToggle = document.getElementById('langToggle');
+    if (langToggle) {
+        langToggle.addEventListener('click', function() {
+            const nextLang = currentLang === 'en' ? 'ar' : 'en';
+            setLanguage(nextLang);
+        });
+    }
+
     // Current Year
     const currentYearEl = document.getElementById('currentYear');
     if (currentYearEl) {

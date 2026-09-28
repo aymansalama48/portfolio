@@ -26,6 +26,10 @@
     --font-mono: 'JetBrains Mono','Fira Code',monospace
 }
 
+html[lang="ar"] {
+    --font-body: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 [data-theme="dark"] {
     --primary: #60a5fa;
     --primary-light: #93c5fd;
@@ -181,6 +185,28 @@ button {
     .theme-toggle:hover {
         color: var(--accent);
         transform: rotate(20deg)
+    }
+
+.lang-toggle {
+    height: 40px;
+    padding: 0 12px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    transition: var(--transition);
+    font-size: .85rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid var(--border);
+}
+
+    .lang-toggle:hover {
+        color: var(--accent);
+        background: rgba(0,212,170,0.08);
+        border-color: var(--accent);
     }
 
 .nav-toggle {
