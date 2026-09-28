@@ -617,12 +617,17 @@ button {
 }
 
 .stat-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 16px;
     background: var(--bg-secondary);
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    box-shadow: var(--shadow-sm)
+    box-shadow: var(--shadow-sm);
+    height: 100%
 }
 
 .stat-number {
@@ -634,9 +639,11 @@ button {
 }
 
 .stat-label {
-    font-size: .75rem;
+    font-size: .85rem;
     color: var(--text-muted);
-    font-weight: 500
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap
 }
 
 .about-content {
@@ -702,7 +709,10 @@ button {
     box-shadow: var(--shadow);
     transition: var(--transition);
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%
 }
 
     .project-card::before {
@@ -713,8 +723,10 @@ button {
         right: 0;
         height: 4px;
         background: linear-gradient(90deg,var(--accent),var(--primary));
+        opacity: 0;
         transform: scaleX(0);
-        transition: var(--transition)
+        transition: var(--transition);
+        transform-origin: center
     }
 
     .project-card:hover {
@@ -723,6 +735,7 @@ button {
     }
 
         .project-card:hover::before {
+            opacity: 1;
             transform: scaleX(1)
         }
 
@@ -828,7 +841,8 @@ button {
 
 .project-actions {
     display: flex;
-    gap: 12px
+    gap: 12px;
+    margin-top: auto
 }
 
 /* Experience */

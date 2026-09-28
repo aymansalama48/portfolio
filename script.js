@@ -9,15 +9,18 @@ const projectDataTrans = {
             status: 'Completed',
             date: 'Aug 2026 - Sep 2026',
             github: 'https://github.com/aymansalama48/Skill-Loop-Backend',
-            description: 'A peer-to-peer skill-sharing platform built as a graduation project in a team of 4. Features a virtual-credit wallet with atomic deductions using optimistic concurrency, live-session booking with automated refunds, Outbox Pattern with Hangfire for reliable messaging, Redis Cache-Aside for performance, and real-time chat via SignalR.',
+            description: 'Graduation project of my CodePlus backend internship, built in a team of 4 (I was a core contributor). A peer-to-peer skill-sharing platform with a virtual-credit economy where users teach and learn using credits.<br><br><strong>Architecture:</strong> Clean Architecture (Domain, Application, Infrastructure, API), DDD, CQRS with a MediatR pipeline (logging, performance, authorization, validation, caching, transaction)',
             features: [
-                'Virtual-credit wallet with atomic deductions using optimistic concurrency',
-                'Live-session booking with automated refund workflows',
-                'Outbox Pattern with Hangfire for reliable background messaging',
-                'Redis Cache-Aside strategy for high-performance data access',
-                'Real-time chat powered by SignalR'
+                'Virtual-credit wallet with atomic deductions using optimistic concurrency (RowVersion)',
+                'Live-session booking with capacity/duplicate guards, a status lifecycle, and automated credit refunds',
+                'Instructor payouts on session completion via domain events',
+                'Outbox Pattern with Hangfire for reliable event processing',
+                'Redis Cache-Aside with event-driven invalidation',
+                'Real-time 1-to-1 chat with SignalR (read receipts)',
+                'JWT + Google OAuth, OTP email verification, permission-based RBAC, staff invitations',
+                'Unit tests with xUnit and Moq'
             ],
-            tech: ['.NET 10', 'Clean Architecture', 'DDD', 'CQRS', 'MediatR', 'EF Core', 'SQL Server', 'Redis', 'Hangfire', 'SignalR']
+            tech: ['.NET 10', 'C# 13', 'EF Core 10', 'SQL Server', 'Redis', 'Hangfire', 'SignalR', 'FluentValidation', 'MailKit', 'Serilog', 'xUnit', 'Moq']
         },
         clinicos: {
             title: 'ClinicOS',
@@ -25,14 +28,17 @@ const projectDataTrans = {
             status: 'Completed',
             date: 'Jul 2026 - Sep 2026',
             github: 'https://github.com/aymansalama48/ClinicOS',
-            description: 'A clinic management and appointment booking API with secure authentication, role-based access control, and robust data-integrity practices.',
+            description: 'A single-tenant clinic management API built with Clean Architecture, CQRS and DDD.',
             features: [
-                'Appointment scheduling and management system',
-                'Secure authentication and role-based access control',
-                'Patient and doctor profile management',
-                'Robust data-integrity and validation practices'
+                'Multi-strategy authentication (email/password, OTP, Google OAuth) with JWT and refresh tokens',
+                'Role- and permission-based authorization enforced in the MediatR pipeline',
+                'Staff management (doctors, receptionists) with invitation-based onboarding',
+                'Dual-path patient registration (self-registration via OTP/Google, or reception-assisted)',
+                'Specializations and doctor schedules with cached queries and automatic invalidation',
+                'Hangfire background jobs and Outbox Pattern for emails/notifications',
+                'Dockerized with Docker Compose'
             ],
-            tech: ['ASP.NET Core', 'EF Core', 'SQL Server']
+            tech: ['.NET 10', 'ASP.NET Core', 'EF Core 10', 'SQL Server', 'MediatR', 'FluentValidation', 'Hangfire', 'MailKit', 'Serilog', 'Scalar', 'Docker']
         },
         commerceos: {
             title: 'CommerceOs',
@@ -57,15 +63,18 @@ const projectDataTrans = {
             status: 'مكتمل',
             date: 'أغسطس 2026 - سبتمبر 2026',
             github: 'https://github.com/aymansalama48/Skill-Loop-Backend',
-            description: 'منصة تبادل مهارات من نظير إلى نظير تم بناؤها كمشروع تخرج ضمن فريق من 4 أفراد. تتضمن محفظة رصيد افتراضية مع خصم ذري باستخدام التزامن التفاؤلي، وحجز جلسات مباشرة مع استرداد تلقائي، ونمط Outbox مع Hangfire، وRedis Cache-Aside، ومحادثة فورية عبر SignalR.',
+            description: 'مشروع تخرج لتدريبي كـ Backend Developer في CodePlus، تم بناؤه ضمن فريق من 4 أفراد (كنت مساهمًا أساسيًا). منصة تبادل مهارات من نظير إلى نظير تعتمد على اقتصاد الرصيد الافتراضي حيث يمكن للمستخدمين التعليم والتعلم باستخدام الأرصدة.<br><br><strong>البنية الهندسية (Architecture):</strong> Clean Architecture (Domain, Application, Infrastructure, API), DDD, CQRS مع MediatR pipeline (تسجيل، أداء، صلاحيات، تحقق، تخزين مؤقت، عمليات مالية).',
             features: [
-                'محفظة رصيد افتراضية مع خصم ذري باستخدام التزامن التفاؤلي (Optimistic Concurrency)',
-                'حجز جلسات مباشرة مع سير عمل استرداد تلقائي',
-                'نمط Outbox مع Hangfire لإرسال رسائل خلفية موثوقة',
-                'استراتيجية Redis Cache-Aside للوصول السريع للبيانات',
-                'محادثة فورية مدعومة بـ SignalR'
+                'محفظة رصيد افتراضية مع خصم ذري باستخدام التزامن التفاؤلي (RowVersion)',
+                'حجز جلسات مباشرة مع حماية السعة/التكرار، دورة حياة للحالة، واسترداد تلقائي للأرصدة',
+                'دفع المستحقات للمدربين عند إكمال الجلسة عبر أحداث النطاق (Domain Events)',
+                'نمط Outbox مع Hangfire لمعالجة الأحداث بشكل موثوق',
+                'استراتيجية Redis Cache-Aside مع إبطال التخزين المؤقت المبني على الأحداث',
+                'محادثة فورية 1 لـ 1 مع SignalR (إيصالات القراءة)',
+                'توثيق JWT + Google OAuth، تفعيل البريد بكلمة مرور لمرة واحدة (OTP)، صلاحيات مبنية على الأدوار (RBAC)، ودعوات للموظفين',
+                'اختبارات الوحدة (Unit Tests) باستخدام xUnit و Moq'
             ],
-            tech: ['.NET 10', 'Clean Architecture', 'DDD', 'CQRS', 'MediatR', 'EF Core', 'SQL Server', 'Redis', 'Hangfire', 'SignalR']
+            tech: ['.NET 10', 'C# 13', 'EF Core 10', 'SQL Server', 'Redis', 'Hangfire', 'SignalR', 'FluentValidation', 'MailKit', 'Serilog', 'xUnit', 'Moq']
         },
         clinicos: {
             title: 'ClinicOS',
@@ -73,14 +82,17 @@ const projectDataTrans = {
             status: 'مكتمل',
             date: 'يوليو 2026 - سبتمبر 2026',
             github: 'https://github.com/aymansalama48/ClinicOS',
-            description: 'واجهة برمجة تطبيقات لإدارة العيادات وحجز المواعيد مع توثيق آمن وتحكم بالوصول المبني على الأدوار وممارسات قوية لسلامة البيانات.',
+            description: 'واجهة برمجة تطبيقات لإدارة العيادات تم بناؤها للمستأجر الفردي (Single-Tenant) باستخدام Clean Architecture، CQRS، و DDD.',
             features: [
-                'نظام جدولة وإدارة المواعيد',
-                'توثيق آمن وتحكم بالوصول المبني على الأدوار',
-                'إدارة ملفات المرضى والأطباء',
-                'ممارسات قوية لسلامة البيانات والتحقق'
+                'استراتيجيات توثيق متعددة (بريد/كلمة مرور، OTP، Google OAuth) مع JWT و Refresh Tokens',
+                'صلاحيات مبنية على الأدوار يتم تطبيقها عبر الـ MediatR pipeline',
+                'إدارة الموظفين (أطباء وموظفي استقبال) مع إمكانية دعوة المستخدمين الجدد',
+                'نظام تسجيل مرضى مزدوج (تسجيل ذاتي عبر OTP/Google، أو تسجيل عبر موظف الاستقبال)',
+                'تخصصات طبية وجداول للأطباء مع استعلامات مخزنة مؤقتًا (Cached Queries) وإبطال تلقائي',
+                'مهام خلفية عبر Hangfire ونمط Outbox لرسائل البريد/الإشعارات',
+                'دعم تشغيل بيئة العمل عبر حاويات Docker و Docker Compose'
             ],
-            tech: ['ASP.NET Core', 'EF Core', 'SQL Server']
+            tech: ['.NET 10', 'ASP.NET Core', 'EF Core 10', 'SQL Server', 'MediatR', 'FluentValidation', 'Hangfire', 'MailKit', 'Serilog', 'Scalar', 'Docker']
         },
         commerceos: {
             title: 'CommerceOs',
@@ -123,7 +135,7 @@ const translations = {
         about_heading: "Junior .NET Backend Developer with a passion for clean, scalable architecture.",
         about_text: "Junior .NET Backend Developer proficient in ASP.NET Core, Clean Architecture, CQRS, EF Core, and SQL Server. Built three backend systems (multi-tenant e-commerce, clinic booking, peer-to-peer credit platform) with secure authentication, RBAC, and data-integrity practices, including a team project delivered in a team of 4.",
         stats_projects: "Backend Projects",
-        stats_team: "Team of 4 Graduation Project",
+        stats_team: "Graduation Team Size",
         stats_tables: "Tables Designed",
         info_name: "<strong>Name:</strong> Ayman Salama Helbawy",
         info_role: "<strong>Role:</strong> Junior .NET Backend Developer",
@@ -209,7 +221,7 @@ const translations = {
         about_heading: "مطور دوت نت خلفي مبتدئ مع شغف بالهندسة النظيفة والقابلة للتوسع.",
         about_text: "مطور دوت نت خلفي مبتدئ متمكن من ASP.NET Core و Clean Architecture و CQRS و EF Core و SQL Server. قام ببناء ثلاثة أنظمة خلفية (تجارة إلكترونية متعددة المستأجرين، حجز عيادات، منصة ائتمان من نظير إلى نظير) مع توثيق آمن وتحكم بالوصول وممارسات سلامة البيانات، بما في ذلك مشروع فريق تم تسليمه ضمن فريق من 4 أفراد.",
         stats_projects: "مشاريع خلفية",
-        stats_team: "مشروع تخرج فريق من 4",
+        stats_team: "حجم فريق التخرج",
         stats_tables: "جداول مصممة",
         info_name: "<strong>الاسم:</strong> أيمن سلامة الهلباوي",
         info_role: "<strong>الوظيفة:</strong> مطور دوت نت خلفي مبتدئ",
